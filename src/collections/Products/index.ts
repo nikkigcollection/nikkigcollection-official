@@ -17,7 +17,7 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
-import type { CollectionConfig, DefaultDocumentIDType } from 'payload'
+import type { DefaultDocumentIDType } from 'payload'
 import { slugField, Where } from 'payload'
 
 export const ProductsCollection: CollectionOverride = ({ defaultCollection }) => ({
