@@ -22,9 +22,7 @@ import { Pages } from '@/collections/Pages'
 import { Users } from '@/collections/Users'
 import { Footer } from '@/globals/Footer'
 import { Header } from '@/globals/Header'
-
-
-import { plugins as localPlugins } from '@/plugins'
+import { plugins } from '@/plugins'
 
 
 
@@ -93,7 +91,7 @@ export default buildConfig({
   endpoints: [],
   globals: [Header, Footer],
   plugins: [
-    ...localPlugins,
+    ...plugins,
     s3Storage({
       collections: {
         media: {
