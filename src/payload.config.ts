@@ -23,6 +23,11 @@ import { Users } from '@/collections/Users'
 import { Footer } from '@/globals/Footer'
 import { Header } from '@/globals/Header'
 
+import { plugins as localPlugins } from '@/plugins'
+
+
+
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -87,6 +92,7 @@ export default buildConfig({
   endpoints: [],
   globals: [Header, Footer],
   plugins: [
+    ...localPlugins,
     s3Storage({
       collections: {
         media: {
@@ -95,7 +101,7 @@ export default buildConfig({
       },
       bucket: process.env.S3_BUCKET || '',
       config: {
-        forcePathStyle: true, // Important for using Supabase
+        forcePathStyle: true,
         credentials: {
           accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
           secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
@@ -103,7 +109,8 @@ export default buildConfig({
         region: process.env.S3_REGION || '',
         endpoint: process.env.S3_ENDPOINT || '',
       },
-    }),
+    }), 
+
   ],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
